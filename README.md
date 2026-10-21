@@ -258,6 +258,161 @@ O(max)
 
 ---
 
+# 8. Pair with Sum K in Unsorted Array Using Hashing
+
+## File
+`PairWithSumK.cpp`
+
+## Theory
+
+The Pair with Sum K problem involves finding all pairs of elements in an array whose sum is equal to a given target value `K`.
+
+In an unsorted array, elements are arranged without any specific order, making it difficult to apply pointer-based techniques directly. A brute-force solution would compare every element with every other element, resulting in a time complexity of `O(n²)`.
+
+To improve efficiency, hashing can be used. The idea is to store previously visited elements in a hash table and, for each current element, check whether the required complement already exists.
+
+```text
+Complement = K - arr[i]
+```
+
+If the complement is found in the hash table, a valid pair is identified.
+
+Example:
+
+```text
+Array: 6 3 8 10 16 7 5 2 9 14
+K = 10
+```
+
+For the element:
+
+```text
+7
+```
+
+the required complement is:
+
+```text
+10 - 7 = 3
+```
+
+Since `3` has already been encountered, the pair `(7, 3)` forms a valid solution.
+
+Hashing transforms repeated searching operations into constant-time lookups, making it one of the most powerful techniques in Data Structures and Algorithms. It serves as the foundation for widely used structures such as Hash Maps, Hash Sets, Dictionaries, and Associative Arrays.
+
+## Approach
+
+1. Create a hash table to store visited elements.
+2. Traverse the array.
+3. For each element, calculate its complement.
+4. Check whether the complement exists in the hash table.
+5. If present, print the pair.
+6. Store the current element in the hash table.
+
+### Time Complexity
+
+```text
+O(n)
+```
+
+### Space Complexity
+
+```text
+O(max)
+```
+
+---
+
+# 9. Pair with Sum K in Sorted Array Using Two Pointers
+
+## File
+`PairWithSumKSoretdArray.cpp`
+
+## Theory
+
+When the array is sorted, the Pair with Sum K problem can be solved efficiently using the Two-Pointer Technique.
+
+A sorted array provides useful ordering information. Instead of checking every possible pair, two pointers are maintained at opposite ends of the array.
+
+```text
+Left Pointer  -> First Element
+Right Pointer -> Last Element
+```
+
+At each step, the sum of the two elements is calculated.
+
+```text
+sum = arr[left] + arr[right]
+```
+
+Depending on the result:
+
+- If `sum == K`, a valid pair is found.
+- If `sum < K`, move the left pointer forward to increase the sum.
+- If `sum > K`, move the right pointer backward to decrease the sum.
+
+Since the array is sorted, moving the pointers guarantees progress toward the solution without revisiting previously checked pairs.
+
+Example:
+
+```text
+Array: 1 3 4 5 6 8 9 10 12 14
+K = 15
+```
+
+Valid pairs:
+
+```text
+(1,14)
+(3,12)
+(5,10)
+(6,9)
+```
+
+The Two-Pointer technique is a common optimization over the brute-force approach. It eliminates unnecessary comparisons and achieves linear time complexity while requiring no extra memory.
+
+## Approach
+
+1. Initialize two pointers:
+   - Left at the beginning.
+   - Right at the end.
+2. Calculate the sum of both elements.
+3. If the sum equals `K`, print the pair and move both pointers.
+4. If the sum is smaller than `K`, move the left pointer forward.
+5. If the sum is greater than `K`, move the right pointer backward.
+6. Continue until both pointers meet.
+
+### Why Use Two Pointers?
+
+Compared to the brute-force solution:
+
+```text
+O(n²)
+```
+
+the Two-Pointer technique reduces the complexity to:
+
+```text
+O(n)
+```
+
+by utilizing the sorted property of the array. This makes it one of the most frequently asked techniques in coding interviews and competitive programming.
+
+### Time Complexity
+
+```text
+O(n)
+```
+
+### Space Complexity
+
+```text
+O(1)
+```
+
+---
+
+
 ## Author
 
 **Krishna Dubbewar**
